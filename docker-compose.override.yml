@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  creditappsys:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+    ports:
+      - "${API_CREDITAPPSYS_EXTERNAL_PORT}:${API_CREDITAPPSYS_PRIVATE_PORT}"

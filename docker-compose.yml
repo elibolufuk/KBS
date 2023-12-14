@@ -1,0 +1,34 @@
+version: '3.4'
+name: credit-app-sys
+
+services:
+  creditappsys:
+    container_name: api.creditappsys
+    image: ${DOCKER_REGISTRY-}creditappsysapi
+    depends_on:
+        - mssqlserverdb
+    build:
+      context: ./src
+      dockerfile: CreditAppSys/Web/KBS.CreditAppSys.Web.Api/Dockerfile
+      
+  mssqlserverdb:
+    container_name: db.mssqlserver
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - ${MS_SQL_EXTERNAL_PORT}:${MS_SQL_INTERNAL_PORT}
+    restart: always
+    environment:
+      SA_PASSWORD: ${MS_SQL_SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+    volumes:
+      - db_mssql_volume:/var/lib/mssqlserver/data
+    networks:
+        - internal
+
+volumes:
+    db_mssql_volume:
+        driver: local
+
+networks:
+    internal:
+        driver: bridge
