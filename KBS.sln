@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBS.CreditAppSys.Persistenc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KBS.CreditAppSys.Domain", "src\CreditAppSys\Source\KBS.CreditAppSys.Domain\KBS.CreditAppSys.Domain.csproj", "{6A9C8B97-FFA6-420C-9AB3-2B2F93360E97}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1F62D0BB-4C96-46E0-90D3-540994011031}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker/docker-compose.dcproj", "{1F62D0BB-4C96-46E0-90D3-540994011031}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
