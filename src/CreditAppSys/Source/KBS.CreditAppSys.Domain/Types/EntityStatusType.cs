@@ -1,6 +1,6 @@
 ﻿namespace KBS.CreditAppSys.Domain.Types
 {
-    public enum StatusType : int
+    public enum EntityStatusType : byte
     {
         Active = 1,
         Passive = 2,

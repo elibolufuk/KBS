@@ -9,5 +9,6 @@ public record Customer : BaseEntity<Guid>
     public string Surname { get; set; }
     public string Email { get; set; }
     public virtual ICollection<CreditApplication> CreditApplications { get; set; }
+    public virtual ICollection<CustomerCriteria> CustomerCriterias { get; set; }
 #nullable restore
 }

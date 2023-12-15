@@ -1,5 +1,5 @@
 ﻿namespace KBS.CreditAppSys.Domain.Types;
-public enum ApplicationResult : int
+public enum ApplicationResultType : byte
 {
     RequestReceived = 1,
     Accepted = 10,

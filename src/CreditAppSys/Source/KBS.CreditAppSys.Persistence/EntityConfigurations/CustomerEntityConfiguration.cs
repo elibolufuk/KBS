@@ -1,15 +1,16 @@
 ﻿using KBS.CreditAppSys.Domain.Entities;
+using KBS.CreditAppSys.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NoteArch.Base.Persistence.Configurations.BaseConfigurations;
 
 namespace KBS.CreditAppSys.Persistence.EntityConfigurations;
-public class CustomerConfiguration : BaseEntityConfiguration<Customer, Guid>
+public class CustomerEntityConfiguration : BaseEntityConfiguration<Customer, Guid>
 {
     public override void Configure(EntityTypeBuilder<Customer> builder)
     {
         base.ConfigureBase(builder);
-        builder.ToTable(nameof(Customer));
+        builder.ToTable(nameof(Customer), EntitySchema.Credit.ToString());
         builder.Property(p => p.IdentityNumber)
             .IsRequired()
             .IsUnicode(false)

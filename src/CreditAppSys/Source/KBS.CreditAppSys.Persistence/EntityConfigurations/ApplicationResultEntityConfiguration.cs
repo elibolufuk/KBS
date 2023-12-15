@@ -5,16 +5,18 @@ using NoteArch.Base.Persistence.Configurations.BaseConfigurations;
 
 namespace KBS.CreditAppSys.Persistence.EntityConfigurations;
 
-public class ApplicationResultTypeConfiguration : BaseEntityConfiguration<ApplicationResultType, int>
+public class ApplicationResultEntityConfiguration : BaseTypeEntityConfiguration<ApplicationResult, byte>
 {
-    public override void Configure(EntityTypeBuilder<ApplicationResultType> builder)
+    public override void Configure(EntityTypeBuilder<ApplicationResult> builder)
     {
         base.ConfigureBase(builder);
-        builder.ToTable(nameof(ApplicationResultType));
+        builder.ToTable(nameof(ApplicationResult), EntitySchema.Credit.ToString());
         builder.Property(p => p.Name)
             .IsRequired()
-            .IsUnicode()
-            .HasMaxLength(100)
+            .IsUnicode(false)
+            .HasMaxLength(50)
             .HasColumnOrder(ColumnOrder);
+
+        
     }
 }

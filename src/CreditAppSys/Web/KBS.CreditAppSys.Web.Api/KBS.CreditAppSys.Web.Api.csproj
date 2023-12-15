@@ -23,4 +23,8 @@
     <ProjectReference Include="..\..\Source\KBS.CreditAppSys.Persistence\KBS.CreditAppSys.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SeedDataJson\" />
+  </ItemGroup>
+
 </Project>

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using KBS.CreditAppSys.Domain.Entities.BaseEntities;
 using KBS.CreditAppSys.Domain.Types;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace NoteArch.Base.Persistence.Configurations.BaseConfigurations;
 
@@ -25,11 +26,11 @@ public abstract class BaseEntityConfiguration<TEntity, TId> : IEntityTypeConfigu
             .HasColumnOrder(ColumnOrder);
 
         builder.Property(p => p.UpdatedById)
-            .HasDefaultValueSql("0x0")
+            .IsRequired(false)
             .HasColumnOrder(ColumnOrder);
 
         builder.Property(p => p.DeletedById)
-            .HasDefaultValueSql("0x0")
+            .IsRequired(false)
             .HasColumnOrder(ColumnOrder);
 
         builder.Property(p => p.CreatedAt)
@@ -38,16 +39,16 @@ public abstract class BaseEntityConfiguration<TEntity, TId> : IEntityTypeConfigu
             .HasColumnOrder(ColumnOrder);
 
         builder.Property(p => p.UpdatedAt)
-            .HasDefaultValueSql("GETDATE()")
+            .IsRequired(false)
             .HasColumnOrder(ColumnOrder);
 
         builder.Property(p => p.DeletedAt)
-            .HasDefaultValueSql("GETDATE()")
+            .IsRequired(false)
             .HasColumnOrder(ColumnOrder);
 
-        builder.Property(p => p.Status)
+        builder.Property(p => p.EntityStatusType)
             .IsRequired()
-            .HasDefaultValue(StatusType.Active)
+            .HasDefaultValue(EntityStatusType.Active)
             .HasColumnOrder(ColumnOrder);
     }
 }

@@ -1,0 +1,18 @@
+﻿[
+  {
+    "Id": "42614CFD-7D0F-471B-9718-C0287776DDE4",
+    "EntityStatusType": 1,
+    "IdentityNumber": "12345678901",
+    "Name": "Ufuk",
+    "Surname": "Elibol",
+    "Email": "ufuk.elibol@test.email.com"
+  },
+  {
+    "Id": "799E8936-31E4-48DB-A751-B378A083EA55",
+    "EntityStatusType": 1,
+    "IdentityNumber": "98765432109",
+    "Name": "Yaseminnur",
+    "Surname": "Elibol",
+    "Email": "yasemin.elibol@test.email.com"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "Id": "826DF2DB-7DB8-4B3C-8A7B-7E0B90E5A0E6",
+    "EntityStatusType": 1,
+    "CustomerId": "42614CFD-7D0F-471B-9718-C0287776DDE4",
+    "Amount": 500000,
+    "LoanTerm": 48,
+    "InterestRate": 1.9,
+    "ApplicationDate": "2023-12-15",
+    "ApplicationResultType": 1
+  },
+  {
+    "Id": "8B93A4F0-8E4C-4C0E-99C8-549B953A1C23",
+    "EntityStatusType": 1,
+    "CustomerId": "799E8936-31E4-48DB-A751-B378A083EA55",
+    "Amount": 100000,
+    "LoanTerm": 60,
+    "InterestRate": 1.9,
+    "ApplicationDate": "2023-12-15",
+    "ApplicationResultType": 2
+  }
+]

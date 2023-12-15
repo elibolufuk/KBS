@@ -1,0 +1,20 @@
+[
+  {
+    "Id": "45BA2CF1-6824-43B9-93BD-0B2A5EF30565",
+    "EntityStatusType": 1,
+    "CustomerId": "42614CFD-7D0F-471B-9718-C0287776DDE4",
+    "CreditScore": 900,
+    "MonthlyIncome": 50000,
+    "MonthlyDebt": 10000,
+    "AdverseCreditHistory": false
+  },
+  {
+    "Id": "035C056C-A62E-4D9C-9771-3ABC43962608",
+    "EntityStatusType": 1,
+    "CustomerId": "799E8936-31E4-48DB-A751-B378A083EA55",
+    "CreditScore": 900,
+    "MonthlyIncome": 40000,
+    "MonthlyDebt": 15000,
+    "AdverseCreditHistory": false
+  }
+]

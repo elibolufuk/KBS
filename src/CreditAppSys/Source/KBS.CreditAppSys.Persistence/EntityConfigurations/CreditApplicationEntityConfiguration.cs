@@ -1,20 +1,30 @@
 ﻿using KBS.CreditAppSys.Domain.Entities;
 using KBS.CreditAppSys.Domain.Types;
+using KBS.CreditAppSys.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NoteArch.Base.Persistence.Configurations.BaseConfigurations;
 
 namespace KBS.CreditAppSys.Persistence.EntityConfigurations;
-
-public class CreditApplicationConfiguration : BaseEntityConfiguration<CreditApplication, Guid>
+public class CreditApplicationEntityConfiguration : BaseEntityConfiguration<CreditApplication, Guid>
 {
     public override void Configure(EntityTypeBuilder<CreditApplication> builder)
     {
         base.ConfigureBase(builder);
-        builder.ToTable(nameof(CreditApplication));
+        builder.ToTable(nameof(CreditApplication), EntitySchema.Credit.ToString());
+
+        builder.Property(c => c.CustomerId)
+            .IsRequired()
+            .HasColumnOrder(ColumnOrder);
+
+        builder.Property(p => p.ApplicationResultType)
+            .IsRequired()
+            .HasDefaultValue(ApplicationResultType.RequestReceived)
+            .HasColumnOrder(ColumnOrder);
+
         builder.Property(c => c.Amount)
             .IsRequired()
-            .HasColumnType("DECIMAL(8,2)")
+            .HasColumnType("DECIMAL(10,2)")
             .HasColumnOrder(ColumnOrder);
 
         builder.Property(c => c.LoanTerm)
@@ -23,7 +33,7 @@ public class CreditApplicationConfiguration : BaseEntityConfiguration<CreditAppl
 
         builder.Property(c => c.InterestRate)
             .IsRequired()
-            .HasColumnType("DECIMAL(2,2)")
+            .HasColumnType("DECIMAL(4,2)")
             .HasColumnOrder(ColumnOrder);
 
         builder.Property(c => c.ApplicationDate)
@@ -31,10 +41,10 @@ public class CreditApplicationConfiguration : BaseEntityConfiguration<CreditAppl
             .HasDefaultValueSql("GETDATE()")
             .HasColumnOrder(ColumnOrder);
 
-        builder.Property(p => p.ApplicationResult)
-            .IsRequired()
-            .HasDefaultValue(ApplicationResult.RequestReceived)
-            .HasColumnOrder(ColumnOrder);
+        builder.HasOne(o => o.Customer)
+            .WithMany(m => m.CreditApplications)
+            .HasForeignKey(o => o.CustomerId)
+            .OnDelete(DeleteBehavior.Restrict);
 
     }
 }
