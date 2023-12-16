@@ -1,4 +1,6 @@
-﻿using KBS.CreditAppSys.Persistence.Contexts;
+﻿using KBS.CreditAppSys.Application.Services.Repositories;
+using KBS.CreditAppSys.Persistence.Contexts;
+using KBS.CreditAppSys.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,10 +9,11 @@ namespace KBS.CreditAppSys.Persistence.Extensions;
 
 public static class ConfigurationExtensions
 {
-    //TODO : IConfiguration configuration kaldırıldı
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
     {
-
+        services.AddScoped<ICreditApplicationRepository, CreditApplicationRepository>();
+        services.AddScoped<ICustomerCriteriaRepository, CustomerCriteriaRepository>();
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
         return services;
     }
 
@@ -19,7 +22,7 @@ public static class ConfigurationExtensions
 #nullable disable
         string migrationAssembly = typeof(CreditDbContext).Assembly.FullName;
 #nullable restore
-        
+
         services.AddDbContext<CreditDbContext>(options =>
         {
             options.UseSqlServer

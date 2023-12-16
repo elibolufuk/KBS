@@ -10,7 +10,9 @@ services:
     build:
       context: ./../src
       dockerfile: CreditAppSys/Web/KBS.CreditAppSys.Web.Api/Dockerfile
-      
+    networks:
+        - internal
+
   mssqlserverdb:
     container_name: db.mssqlserver
     image: mcr.microsoft.com/mssql/server:2019-latest

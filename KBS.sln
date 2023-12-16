@@ -15,15 +15,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{CFEE88
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{7E71C5D4-05AB-4DA0-A1CA-E9A4B6D27B5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBS.CreditAppSys.Web.Api", "src\CreditAppSys\Web\KBS.CreditAppSys.Web.Api\KBS.CreditAppSys.Web.Api.csproj", "{27C83EA4-482C-4ABD-939C-E028A025582A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KBS.CreditAppSys.Web.Api", "src\CreditAppSys\Web\KBS.CreditAppSys.Web.Api\KBS.CreditAppSys.Web.Api.csproj", "{27C83EA4-482C-4ABD-939C-E028A025582A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBS.CreditAppSys.Application", "src\CreditAppSys\Source\KBS.CreditAppSys.Application\KBS.CreditAppSys.Application.csproj", "{822B0C6C-160D-496B-86F1-DB657A43C961}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KBS.CreditAppSys.Application", "src\CreditAppSys\Source\KBS.CreditAppSys.Application\KBS.CreditAppSys.Application.csproj", "{822B0C6C-160D-496B-86F1-DB657A43C961}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBS.CreditAppSys.Persistence", "src\CreditAppSys\Source\KBS.CreditAppSys.Persistence\KBS.CreditAppSys.Persistence.csproj", "{37EEE9E7-9B6F-455C-A531-3ADF20F5BE74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KBS.CreditAppSys.Persistence", "src\CreditAppSys\Source\KBS.CreditAppSys.Persistence\KBS.CreditAppSys.Persistence.csproj", "{37EEE9E7-9B6F-455C-A531-3ADF20F5BE74}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KBS.CreditAppSys.Domain", "src\CreditAppSys\Source\KBS.CreditAppSys.Domain\KBS.CreditAppSys.Domain.csproj", "{6A9C8B97-FFA6-420C-9AB3-2B2F93360E97}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker/docker-compose.dcproj", "{1F62D0BB-4C96-46E0-90D3-540994011031}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker\docker-compose.dcproj", "{1F62D0BB-4C96-46E0-90D3-540994011031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBS.Core", "src\Core\KBS.Core\KBS.Core.csproj", "{C3510CB4-865F-45E2-86DC-470F3B5C9D49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{1F62D0BB-4C96-46E0-90D3-540994011031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F62D0BB-4C96-46E0-90D3-540994011031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F62D0BB-4C96-46E0-90D3-540994011031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3510CB4-865F-45E2-86DC-470F3B5C9D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3510CB4-865F-45E2-86DC-470F3B5C9D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3510CB4-865F-45E2-86DC-470F3B5C9D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3510CB4-865F-45E2-86DC-470F3B5C9D49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{822B0C6C-160D-496B-86F1-DB657A43C961} = {CFEE8880-552F-4086-B9D1-FD7A18013B7D}
 		{37EEE9E7-9B6F-455C-A531-3ADF20F5BE74} = {CFEE8880-552F-4086-B9D1-FD7A18013B7D}
 		{6A9C8B97-FFA6-420C-9AB3-2B2F93360E97} = {CFEE8880-552F-4086-B9D1-FD7A18013B7D}
+		{C3510CB4-865F-45E2-86DC-470F3B5C9D49} = {887FF591-5042-4C82-9C6F-B512B58F66B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE391C6D-D9E2-4B44-807A-97CF747D07F5}

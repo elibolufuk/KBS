@@ -7,12 +7,38 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.8.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.1" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\KBS.Core\KBS.Core.csproj" />
     <ProjectReference Include="..\KBS.CreditAppSys.Domain\KBS.CreditAppSys.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\CreditApplications\Commands\Delete\" />
+    <Folder Include="Features\CreditApplications\Commands\Update\" />
+    <Folder Include="Features\CreditApplications\Rules\" />
+    <Folder Include="Features\CustomerCriteria\Commands\Create\" />
+    <Folder Include="Features\CustomerCriteria\Commands\Delete\" />
+    <Folder Include="Features\CustomerCriteria\Commands\Update\" />
+    <Folder Include="Features\CustomerCriteria\Constants\" />
+    <Folder Include="Features\CustomerCriteria\Profiles\" />
+    <Folder Include="Features\CustomerCriteria\Queries\GetById\" />
+    <Folder Include="Features\CustomerCriteria\Queries\GetList\" />
+    <Folder Include="Features\CustomerCriteria\Rules\" />
+    <Folder Include="Features\Customers\Commands\Delete\" />
+    <Folder Include="Features\Customers\Commands\Update\" />
+    <Folder Include="Features\Customers\Queries\GetById\" />
+    <Folder Include="Features\Customers\Queries\GetList\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
 </Project>

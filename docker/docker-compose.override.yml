@@ -4,5 +4,6 @@ services:
   creditappsys:
     environment:
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - ConnectionStrings__CreditConnectionString=Server=${MS_SQL_SERVER};Database=${CREDIT_DATABASE_NAME};User Id=${MS_SQL_USER};Password=${MS_SQL_SA_PASSWORD};Encrypt=False;TrustServerCertificate=True;
     ports:
       - "${API_CREDITAPPSYS_EXTERNAL_PORT}:${API_CREDITAPPSYS_PRIVATE_PORT}"
