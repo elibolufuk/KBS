@@ -1,4 +1,5 @@
-﻿using KBS.CreditAppSys.Application.Responses.CommandResponses;
+﻿using KBS.CreditAppSys.Application.Features.CustomerCriterias.Commands.Create;
+using KBS.CreditAppSys.Application.Responses.CommandResponses;
 using KBS.CreditAppSys.Domain.Types;
 
 namespace KBS.CreditAppSys.Application.Features.CreditApplications.Commands.Create
@@ -11,5 +12,7 @@ namespace KBS.CreditAppSys.Application.Features.CreditApplications.Commands.Crea
         public DateTime ApplicationDate { get; set; }
         public decimal InterestRate { get; set; }
         public ApplicationResultType ApplicationResultType { get; set; }
+
+        public CreateCustomerCriteriaCommandResponse? CustomerCriteria { get; set; }
     }
 }

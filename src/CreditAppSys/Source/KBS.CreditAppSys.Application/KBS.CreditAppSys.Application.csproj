@@ -17,21 +17,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\KBS.Core\KBS.Core.csproj" />
+    <ProjectReference Include="..\..\..\Integration\KBS.Integration\KBS.Integration.csproj" />
     <ProjectReference Include="..\KBS.CreditAppSys.Domain\KBS.CreditAppSys.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Features\CreditApplications\Commands\Delete\" />
     <Folder Include="Features\CreditApplications\Commands\Update\" />
-    <Folder Include="Features\CreditApplications\Rules\" />
-    <Folder Include="Features\CustomerCriteria\Commands\Create\" />
-    <Folder Include="Features\CustomerCriteria\Commands\Delete\" />
-    <Folder Include="Features\CustomerCriteria\Commands\Update\" />
-    <Folder Include="Features\CustomerCriteria\Constants\" />
-    <Folder Include="Features\CustomerCriteria\Profiles\" />
-    <Folder Include="Features\CustomerCriteria\Queries\GetById\" />
-    <Folder Include="Features\CustomerCriteria\Queries\GetList\" />
-    <Folder Include="Features\CustomerCriteria\Rules\" />
+    <Folder Include="Features\CustomerCriterias\Commands\Delete\" />
+    <Folder Include="Features\CustomerCriterias\Commands\Update\" />
+    <Folder Include="Features\CustomerCriterias\Queries\GetById\" />
+    <Folder Include="Features\CustomerCriterias\Queries\GetList\" />
+    <Folder Include="Features\CustomerCriterias\Rules\" />
     <Folder Include="Features\Customers\Commands\Delete\" />
     <Folder Include="Features\Customers\Commands\Update\" />
     <Folder Include="Features\Customers\Queries\GetList\" />

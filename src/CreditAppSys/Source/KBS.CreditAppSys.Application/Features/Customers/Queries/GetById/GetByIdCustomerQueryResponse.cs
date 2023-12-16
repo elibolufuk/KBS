@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-
-namespace KBS.CreditAppSys.Application.Features.Customers.Queries.GetById;
+﻿namespace KBS.CreditAppSys.Application.Features.Customers.Queries.GetById;
 
 public record GetByIdCustomerQueryResponse
 {

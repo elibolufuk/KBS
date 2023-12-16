@@ -26,7 +26,7 @@ public class CreateCustomerCommand : IRequest<ResponseResult<CreateCustomerComma
         {
             var isDataAvailable = await _customerBusinessRules.IsDataAvailable(request);
             if (isDataAvailable)
-                return new ResponseResult<CreateCustomerCommandResponse>
+                return new()
                 {
                     Succeeded = false,
                     ResponseMessage = CreateCustomerConstants.IdentityNumberIsAvailable
@@ -37,7 +37,7 @@ public class CreateCustomerCommand : IRequest<ResponseResult<CreateCustomerComma
             var createCustomerResponse = await _customerRepository.AddAsync(customer);
 
             var commandResponse = _mapper.Map<CreateCustomerCommandResponse>(createCustomerResponse);
-            return new ResponseResult<CreateCustomerCommandResponse>
+            return new()
             {
                 Succeeded = true,
                 Data = commandResponse

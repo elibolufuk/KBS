@@ -2,7 +2,9 @@
 using FluentValidation;
 using KBS.CreditAppSys.Application.Features.BaseRules;
 using KBS.CreditAppSys.Application.Features.CreditApplications.Commands.Create;
+using KBS.CreditAppSys.Application.Features.CreditApplications.Queries.GetById;
 using KBS.CreditAppSys.Application.Features.Customers.Commands.Create;
+using KBS.CreditAppSys.Application.Features.Customers.Queries.GetById;
 using KBS.CreditAppSys.Application.Pipelines.Validation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -30,6 +32,8 @@ public static class ConfigurationExtensions
     {
         services.AddScoped<IValidator<CreateCustomerCommand>, CreateCustomerCommandValidator>();
         services.AddScoped<IValidator<CreateCreditApplicationCommand>, CreateCreditApplicationCommandValidator>();
+        services.AddScoped<IValidator<GetByIdCreditApplicationQuery>, GetByIdCreditApplicationQueryValidator>();
+        services.AddScoped<IValidator<GetByIdCustomerQuery>, GetByIdCustomerQueryValidator>();
         return services;
     }
 

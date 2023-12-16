@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using KBS.Core.Responses;
+using KBS.CreditAppSys.Application.Features.CreditApplications.Constants;
 using KBS.CreditAppSys.Application.Services.Repositories;
 using KBS.CreditAppSys.Domain.Entities;
 using MediatR;
@@ -22,9 +23,15 @@ public class GetByIdCreditApplicationQuery : IRequest<ResponseResult<GetByIdCred
 
             var creditApplication = await _creditApplicationRepository
                 .GetAsync(x => x.Id == request.Id, cancellationToken: cancellationToken, include: include);
+            if (creditApplication == null)
+                return new()
+                {
+                    Succeeded = false,
+                    ResponseMessage = GetByIdCreditApplicationConstants.CustomerNotReceived
+                };
 
             var response = _mapper.Map<GetByIdCreditApplicationQueryResponse>(creditApplication);
-            return new ResponseResult<GetByIdCreditApplicationQueryResponse>
+            return new()
             {
                 Succeeded = true,
                 Data = response

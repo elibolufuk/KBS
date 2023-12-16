@@ -17,5 +17,13 @@ public class CreateCreditApplicationCommandValidator : AbstractValidator<CreateC
         RuleFor(c => c.LoanTerm)
             .NotEmpty()
             .WithMessage(CreateCreditApplicationConstants.LoanTermValidatorErrorMessage);
+
+        RuleFor(c => c.MonthlyDebt)
+            .NotEmpty()
+            .WithMessage(CreateCreditApplicationConstants.MonthlyDebtValidatorErrorMessage);
+
+        RuleFor(c => c.MonthlyIncome)
+            .NotEmpty()
+            .WithMessage(CreateCreditApplicationConstants.MonthlyIncomeValidatorErrorMessage);
     }
 }
