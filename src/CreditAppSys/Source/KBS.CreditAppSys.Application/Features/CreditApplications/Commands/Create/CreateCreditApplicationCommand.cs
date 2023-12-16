@@ -27,7 +27,9 @@ public class CreateCreditApplicationCommand : IRequest<ResponseResult<CreateCred
             creditApplication.ApplicationDate = DateTime.UtcNow;
             creditApplication.InterestRate = CreditCriteriaConstatns.InterestRate;
             creditApplication.ApplicationResultType = ApplicationResultType.RequestReceived;
-            
+
+            creditApplication.
+
             var createCreditApplicationResponse = await _creditApplicationRepository.AddAsync(creditApplication);
             var commandResponse = _mapper.Map<CreateCreditApplicationCommandResponse>(createCreditApplicationResponse);
             return new ResponseResult<CreateCreditApplicationCommandResponse>

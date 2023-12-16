@@ -23,7 +23,9 @@ public abstract class BaseRepository<TEntity, TId, TContext>(TContext context)
         return entity;
     }
 
-    public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>>? predicate = null, bool enableTracking = true, CancellationToken cancellationToken = default)
+    public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>>? predicate = null,
+        bool enableTracking = true,
+        CancellationToken cancellationToken = default)
     {
         IQueryable<TEntity> queryable = Query();
 
@@ -36,27 +38,43 @@ public abstract class BaseRepository<TEntity, TId, TContext>(TContext context)
         return await queryable.AnyAsync(cancellationToken);
     }
 
-    public virtual async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool enableTracking = true, CancellationToken cancellationToken = default)
+    public virtual async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool enableTracking = false,
+        CancellationToken cancellationToken = default)
     {
         IQueryable<TEntity> queryable = Query();
+
         if (!enableTracking)
             queryable = queryable.AsNoTracking();
-        if (include != null)
-            queryable = include(queryable);
 
-        return await queryable.FirstOrDefaultAsync(predicate, cancellationToken);
-    }
-
-    public virtual async Task<Paginate<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, int index = 0, int size = 10, bool enableTracking = true, CancellationToken cancellationToken = default)
-    {
-        IQueryable<TEntity> queryable = Query();
-        if (!enableTracking)
-            queryable = queryable.AsNoTracking();
         if (include != null)
             queryable = include(queryable);
 
         if (predicate != null)
             queryable = queryable.Where(predicate);
+
+        return await queryable.FirstOrDefaultAsync(cancellationToken);
+    }
+
+    public virtual async Task<Paginate<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        int index = 0,
+        int size = 10,
+        bool enableTracking = false,
+        CancellationToken cancellationToken = default)
+    {
+        IQueryable<TEntity> queryable = Query();
+        if (!enableTracking)
+            queryable = queryable.AsNoTracking();
+
+        if (include != null)
+            queryable = include(queryable);
+
+        if (predicate != null)
+            queryable = queryable.Where(predicate);
+
         if (orderBy != null)
             return await orderBy(queryable).ToPaginateAsync(index, size, cancellationToken);
         return await queryable.ToPaginateAsync(index, size, cancellationToken);

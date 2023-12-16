@@ -12,7 +12,7 @@ public interface IBaseRepository<TEntity, TId> : IQuery<TEntity>
          (
              Expression<Func<TEntity, bool>> predicate,
              Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-             bool enableTracking = true,
+             bool enableTracking = false,
              CancellationToken cancellationToken = default
          );
 
@@ -23,13 +23,13 @@ public interface IBaseRepository<TEntity, TId> : IQuery<TEntity>
             Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
             int index = 0,
             int size = 10,
-            bool enableTracking = true,
+            bool enableTracking = false,
             CancellationToken cancellationToken = default
         );
     Task<bool> AnyAsync
         (
            Expression<Func<TEntity, bool>>? predicate = null,
-           bool enableTracking = true,
+           bool enableTracking = false,
            CancellationToken cancellationToken = default
         );
 

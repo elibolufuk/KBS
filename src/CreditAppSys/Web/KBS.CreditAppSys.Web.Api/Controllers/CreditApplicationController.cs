@@ -2,6 +2,7 @@
 using KBS.Core.Responses;
 using KBS.CreditAppSys.Application.Features.CreditApplications.Commands.Create;
 using KBS.CreditAppSys.Application.Features.CreditApplications.Queries.GetById;
+using KBS.CreditAppSys.Application.Features.CreditApplications.Queries.GetList;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -26,8 +27,9 @@ namespace KBS.CreditAppSys.Web.Api.Controllers
         [HttpGet("Get/{id}")]
         [ProducesResponseType(typeof(ResponseResult<GetByIdCreditApplicationQueryResponse>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(BaseResponseResult), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Get([FromRoute] GetByIdCreditApplicationQuery request)
+        public async Task<IActionResult> Get([FromRoute] Guid id)
         {
+            GetByIdCreditApplicationQuery request = new() { Id = id };
             var response = await base.Mediator.Send(request);
 
             if (!response.Succeeded)
@@ -37,9 +39,9 @@ namespace KBS.CreditAppSys.Web.Api.Controllers
         }
 
         [HttpGet("List")]
-        [ProducesResponseType(typeof(ResponseResult<GetByIdCreditApplicationQueryResponse>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ListResponseResult<GetByIdCreditApplicationQueryResponse>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(BaseResponseResult), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> List([FromRoute] GetByIdCreditApplicationQuery request)
+        public async Task<IActionResult> List([FromQuery] GetListCreditApplicationQuery request)
         {
             var response = await base.Mediator.Send(request);
 

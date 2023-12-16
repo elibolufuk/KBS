@@ -17,7 +17,7 @@ builder.Services.AddPersistenceServices();
 #endregion
 
 var app = builder.Build();
-
+app.Services.MigrateCreditDbContext();
 if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
 {
     app.UseSwagger();

@@ -11,6 +11,7 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.1" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
@@ -33,7 +34,6 @@
     <Folder Include="Features\CustomerCriteria\Rules\" />
     <Folder Include="Features\Customers\Commands\Delete\" />
     <Folder Include="Features\Customers\Commands\Update\" />
-    <Folder Include="Features\Customers\Queries\GetById\" />
     <Folder Include="Features\Customers\Queries\GetList\" />
   </ItemGroup>
 
