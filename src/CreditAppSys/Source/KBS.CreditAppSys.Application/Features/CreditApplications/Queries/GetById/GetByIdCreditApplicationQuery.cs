@@ -27,14 +27,16 @@ public class GetByIdCreditApplicationQuery : IRequest<ResponseResult<GetByIdCred
                 return new()
                 {
                     Succeeded = false,
-                    ResponseMessage = GetByIdCreditApplicationConstants.CustomerNotReceived
+                    ResponseMessage = GetByIdCreditApplicationConstants.CustomerNotReceived,
+                    ResponseResultType = ResponseResultType.BusinessRuleError
                 };
 
             var response = _mapper.Map<GetByIdCreditApplicationQueryResponse>(creditApplication);
             return new()
             {
                 Succeeded = true,
-                Data = response
+                Data = response,
+                ResponseResultType = ResponseResultType.Succeeded
             };
         }
     }

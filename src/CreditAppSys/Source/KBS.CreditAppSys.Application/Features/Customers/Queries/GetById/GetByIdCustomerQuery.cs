@@ -15,19 +15,21 @@ public class GetByIdCustomerQuery : IRequest<ResponseResult<GetByIdCustomerQuery
         private readonly IMapper _mapper = mapper;
         public async Task<ResponseResult<GetByIdCustomerQueryResponse>> Handle(GetByIdCustomerQuery request, CancellationToken cancellationToken)
         {
-            var customer = await _customerRepository.GetAsync(x => x.Id == request.Id);
+            var customer = await _customerRepository.GetAsync(x => x.Id == request.Id, cancellationToken: cancellationToken);
             if (customer == null)
                 return new()
                 {
                     Succeeded = false,
-                    ResponseMessage = GetByIdCustomerConstants.CustomerNotReceived
+                    ResponseMessage = GetByIdCustomerConstants.CustomerNotReceived,
+                    ResponseResultType = ResponseResultType.DatabaseError
                 };
 
             var response = _mapper.Map<GetByIdCustomerQueryResponse>(customer);
             return new()
             {
                 Data = response,
-                Succeeded = true
+                Succeeded = true,
+                ResponseResultType = ResponseResultType.Succeeded
             };
         }
     }

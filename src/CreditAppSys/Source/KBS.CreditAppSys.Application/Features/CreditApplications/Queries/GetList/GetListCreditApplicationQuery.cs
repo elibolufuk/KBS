@@ -43,7 +43,7 @@ public class GetListCreditApplicationQuery : IRequest<ListResponseResult<GetList
                 cancellationToken: cancellationToken);
 
             var response = _mapper.Map<IList<GetListCreditApplicationQueryResponse>>(creditApplication.Items);
-            return new ListResponseResult<GetListCreditApplicationQueryResponse>
+            return new()
             {
                 Succeeded = true,
                 Data = response,

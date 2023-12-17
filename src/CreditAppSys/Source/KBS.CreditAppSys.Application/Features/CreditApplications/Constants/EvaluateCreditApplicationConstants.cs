@@ -1,5 +1,5 @@
 ﻿namespace KBS.CreditAppSys.Application.Features.CreditApplications.Constants;
-internal class EvaluateCreditApplicationConstants
+public class EvaluateCreditApplicationConstants
 {
     public const int MinimumAcceptedCreditScore = 700;
     public const decimal MinimumDebtToIncomeRatio = 0.4m;

@@ -27,7 +27,8 @@ public class CreateCustomerCriteriaCommand : IRequest<ResponseResult<CreateCusto
             return new()
             {
                 Succeeded = true,
-                Data = commandResponse
+                Data = commandResponse,
+                ResponseResultType = ResponseResultType.Succeeded
             };
         }
     }

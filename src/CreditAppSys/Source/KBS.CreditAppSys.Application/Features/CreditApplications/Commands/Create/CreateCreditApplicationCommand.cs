@@ -21,13 +21,15 @@ public class CreateCreditApplicationCommand : IRequest<ResponseResult<CreateCred
     public decimal MonthlyIncome { get; set; }
 
     public class CreateCreditApplicationCommandHandler(IMapper mapper, ICreditApplicationRepository creditApplicationRepository, IMediator mediator,
-        ICreditReportService creditReportService)
+        ICreditReportService creditReportService, CreditApplicationBusinessRules creditApplicationBusinessRules)
         : IRequestHandler<CreateCreditApplicationCommand, ResponseResult<CreateCreditApplicationCommandResponse>>
     {
         private readonly IMapper _mapper = mapper;
         private readonly ICreditApplicationRepository _creditApplicationRepository = creditApplicationRepository;
         private readonly IMediator _mediator = mediator;
         private readonly ICreditReportService _creditReportService = creditReportService;
+        private readonly CreditApplicationBusinessRules _creditApplicationBusinessRules = creditApplicationBusinessRules;
+
         public async Task<ResponseResult<CreateCreditApplicationCommandResponse>> Handle(CreateCreditApplicationCommand request, CancellationToken cancellationToken)
         {
             #region Customer
@@ -37,7 +39,23 @@ public class CreateCreditApplicationCommand : IRequest<ResponseResult<CreateCred
                 return new()
                 {
                     Succeeded = false,
-                    ResponseMessage = CreateCreditCriteriaConstants.CustomerInformationNotReceived
+                    ResponseMessage = CreateCreditCriteriaConstants.CustomerInformationNotReceived,
+                    Data = null,
+                    ResponseResultType = ResponseResultType.DatabaseError
+                };
+
+            #endregion
+
+            #region activeApplication
+
+            var activeApplication = await _creditApplicationBusinessRules.ActiveApplicationByCustomer(customer.Data.Id);
+            if (activeApplication)
+                return new()
+                {
+                    Succeeded = true,
+                    ResponseMessage = CreateCreditCriteriaConstants.ActiveApplicationError,
+                    Data = null,
+                    ResponseResultType = ResponseResultType.BusinessRuleError
                 };
 
             #endregion
@@ -50,7 +68,30 @@ public class CreateCreditApplicationCommand : IRequest<ResponseResult<CreateCred
                 {
                     Succeeded = false,
                     Data = null,
-                    ResponseMessage = CreateCreditCriteriaConstants.CustomerCreditReportNotReceived
+                    ResponseMessage = CreateCreditCriteriaConstants.CustomerCreditReportNotReceived,
+                    ResponseResultType = ResponseResultType.IntegrationError
+                };
+
+            #endregion
+
+            #region createCustomerCriteria
+
+            var createCustomerCriteriaResponse = await _mediator.Send(new CreateCustomerCriteriaCommand
+            {
+                AdverseCreditHistory = true,
+                CreditScore = customerCreditReport.Data.CreditScore,
+                CustomerId = request.CustomerId,
+                MonthlyDebt = request.MonthlyDebt,
+                MonthlyIncome = request.MonthlyIncome
+            }, cancellationToken);
+
+            if (!createCustomerCriteriaResponse.Succeeded)
+                return new()
+                {
+                    Succeeded = false,
+                    Data = null,
+                    ResponseMessage = CreateCreditCriteriaConstants.CreditCriteriaAddingFailed,
+                    ResponseResultType = ResponseResultType.DatabaseError
                 };
 
             #endregion
@@ -64,29 +105,7 @@ public class CreateCreditApplicationCommand : IRequest<ResponseResult<CreateCred
             creditApplication.ApplicationResultType = CreditApplicationBusinessRules
                 .EvaluateCreditApplication(customerCreditReport.Data.CreditScore, request.MonthlyDebt, request.MonthlyIncome, request.Amount, request.LoanTerm,
                 customerCreditReport.Data.AdverseCreditHistory);
-
             var createCreditApplicationResponse = await _creditApplicationRepository.AddAsync(creditApplication);
-
-            #endregion
-
-            #region createCustomerCriteria
-
-            var createCustomerCriteriaResponse = await _mediator.Send(new CreateCustomerCriteriaCommand
-            {
-                AdverseCreditHistory = true,
-                CreditScore = customerCreditReport.Data.CreditScore,
-                CustomerId = creditApplication.CustomerId,
-                MonthlyDebt = request.MonthlyDebt,
-                MonthlyIncome = request.MonthlyIncome
-            }, cancellationToken);
-
-            if (!createCustomerCriteriaResponse.Succeeded)
-                return new()
-                {
-                    Succeeded = false,
-                    Data = null,
-                    ResponseMessage = CreateCreditCriteriaConstants.CreditCriteriaAddingFailed
-                };
 
             #endregion
 
@@ -96,7 +115,8 @@ public class CreateCreditApplicationCommand : IRequest<ResponseResult<CreateCred
             return new()
             {
                 Succeeded = true,
-                Data = commandResponse
+                Data = commandResponse,
+                ResponseResultType = ResponseResultType.Succeeded
             };
         }
     }

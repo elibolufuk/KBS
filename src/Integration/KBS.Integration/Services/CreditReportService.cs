@@ -9,12 +9,13 @@ public class CreditReportService : ICreditReportService
     public ResponseResult<CreditInformationResponse> CreditInformationByIdentityNumber(string identityNumber)
         => new()
         {
-            Data = new CreditInformationResponse
+            Data = new()
             {
                 AdverseCreditHistory = new Random().Next(2) == 0,
                 CreditScore = (short)new Random().Next(200, 2000),
                 IdentityNumber = identityNumber
             },
-            Succeeded = true
+            Succeeded = true,
+            ResponseResultType = ResponseResultType.Succeeded
         };
 }

@@ -29,7 +29,8 @@ public class CreateCustomerCommand : IRequest<ResponseResult<CreateCustomerComma
                 return new()
                 {
                     Succeeded = false,
-                    ResponseMessage = CreateCustomerConstants.IdentityNumberIsAvailable
+                    ResponseMessage = CreateCustomerConstants.IdentityNumberIsAvailable,
+                    ResponseResultType = ResponseResultType.ExistingDataError
                 };
 
             var customer = _mapper.Map<Customer>(request);
@@ -40,7 +41,8 @@ public class CreateCustomerCommand : IRequest<ResponseResult<CreateCustomerComma
             return new()
             {
                 Succeeded = true,
-                Data = commandResponse
+                Data = commandResponse,
+                ResponseResultType = ResponseResultType.Succeeded
             };
         }
     }

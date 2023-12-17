@@ -2,7 +2,7 @@
 {
     public record BaseError
     {
-        public string? Code { get; set; }
+        public string? Property { get; set; }
         public string? Description { get; set; }
     }
 }
