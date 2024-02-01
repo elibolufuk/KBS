@@ -39,7 +39,7 @@ public class CreateCreditApplicationCommandHandlerTests
         _creditApplicationRepository = Mock.Of<ICreditApplicationRepository>();
         _mediator = Mock.Of<IMediator>();
         _creditReportService = Mock.Of<ICreditReportService>();
-        _creditApplicationBusinessRules =  new CreditApplicationBusinessRules(_creditApplicationRepository);
+        _creditApplicationBusinessRules = new CreditApplicationBusinessRules(_creditApplicationRepository);
 
         _customer = new()
         {

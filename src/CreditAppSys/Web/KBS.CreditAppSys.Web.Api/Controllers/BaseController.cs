@@ -1,5 +1,4 @@
-﻿using Azure;
-using KBS.Core.Responses;
+﻿using KBS.Core.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;

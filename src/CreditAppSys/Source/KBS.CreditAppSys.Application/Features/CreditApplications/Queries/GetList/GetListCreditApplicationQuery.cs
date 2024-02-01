@@ -5,8 +5,8 @@ using KBS.CreditAppSys.Application.Services.Repositories;
 using KBS.CreditAppSys.Domain.Entities;
 using KBS.CreditAppSys.Domain.Types;
 using MediatR;
-using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
 namespace KBS.CreditAppSys.Application.Features.CreditApplications.Queries.GetList;

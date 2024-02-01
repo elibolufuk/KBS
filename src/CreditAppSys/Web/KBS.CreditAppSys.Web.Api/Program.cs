@@ -1,5 +1,5 @@
-using KBS.CreditAppSys.Persistence.Extensions;
 using KBS.CreditAppSys.Application.Extensions;
+using KBS.CreditAppSys.Persistence.Extensions;
 using KBS.Integration.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

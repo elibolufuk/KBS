@@ -1,9 +1,7 @@
 ﻿using KBS.CreditAppSys.Domain.Entities;
 using KBS.CreditAppSys.Domain.Types;
-using KBS.CreditAppSys.Persistence.EntityConfigurations;
 using KBS.CreditAppSys.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
 using System.Reflection;
 
 namespace KBS.CreditAppSys.Persistence.Contexts;

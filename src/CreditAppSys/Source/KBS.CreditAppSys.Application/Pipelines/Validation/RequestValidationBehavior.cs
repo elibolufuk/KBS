@@ -2,7 +2,6 @@
 using KBS.Core.Responses;
 using KBS.CreditAppSys.Application.Exceptions.Models;
 using MediatR;
-using System.Linq;
 using ValidationException = KBS.CreditAppSys.Application.Exceptions.Types.ValidationException;
 
 namespace KBS.CreditAppSys.Application.Pipelines.Validation;

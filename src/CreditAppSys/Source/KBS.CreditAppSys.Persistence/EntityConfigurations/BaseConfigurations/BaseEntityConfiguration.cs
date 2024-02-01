@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using KBS.CreditAppSys.Domain.Entities.BaseEntities;
+﻿using KBS.CreditAppSys.Domain.Entities.BaseEntities;
 using KBS.CreditAppSys.Domain.Types;
-using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace NoteArch.Base.Persistence.Configurations.BaseConfigurations;
 

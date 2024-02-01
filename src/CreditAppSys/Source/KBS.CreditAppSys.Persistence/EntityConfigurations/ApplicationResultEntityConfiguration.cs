@@ -17,6 +17,6 @@ public class ApplicationResultEntityConfiguration : BaseTypeEntityConfiguration<
             .HasMaxLength(50)
             .HasColumnOrder(ColumnOrder);
 
-        
+
     }
 }

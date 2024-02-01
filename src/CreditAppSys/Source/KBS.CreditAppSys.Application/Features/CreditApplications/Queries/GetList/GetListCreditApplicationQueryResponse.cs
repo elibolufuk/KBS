@@ -4,7 +4,7 @@ using KBS.CreditAppSys.Domain.Types;
 
 namespace KBS.CreditAppSys.Application.Features.CreditApplications.Queries.GetList
 {
-    public record GetListCreditApplicationQueryResponse: GetQueryBaseResponse<Guid>
+    public record GetListCreditApplicationQueryResponse : GetQueryBaseResponse<Guid>
     {
         public decimal Amount { get; set; }
         public byte LoanTerm { get; set; }

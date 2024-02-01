@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using KBS.Core.Responses;
+using KBS.CreditAppSys.Application.Features.Customers.Constants;
 using KBS.CreditAppSys.Application.Features.Customers.Rules;
 using KBS.CreditAppSys.Application.Pipelines.Transaction;
 using KBS.CreditAppSys.Application.Services.Repositories;
-using MediatR;
 using KBS.CreditAppSys.Domain.Entities;
-using KBS.CreditAppSys.Application.Features.Customers.Constants;
-using KBS.Core.Responses;
+using MediatR;
 
 namespace KBS.CreditAppSys.Application.Features.Customers.Commands.Create;
 public class CreateCustomerCommand : IRequest<ResponseResult<CreateCustomerCommandResponse>>, ITransactionalRequest

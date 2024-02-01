@@ -1,7 +1,7 @@
 ﻿using KBS.CreditAppSys.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NoteArch.Base.Persistence.Configurations.BaseConfigurations;
-using Microsoft.EntityFrameworkCore;
 
 namespace KBS.CreditAppSys.Persistence.EntityConfigurations;
 public class EntityStatusEntityConfiguration : BaseTypeEntityConfiguration<EntityStatus, byte>
